@@ -1,1 +1,11 @@
 # Image-Processing-with-a-CNN
+This study utilized partial dataset (1000 cat images and 1000 dog images) of the [2013 Kaggle Dogs vs. Cats competition](https://www.kaggle.com/c/dogs-vs-cats). to examin how the three factors may impact a convolutional neural network (CNN) performance: (1) image color; (2) image size; and (3) pooling-layer type. Each factor has two levels: image color (gray: channel=1/color: channel=3), image size (64x64/128x128), and pooling-layer (max_pooling/average_pooling). Thus, this benchmark experiment was conducted with a 2x3 factorial design.**
+
+Keras from tensorflow was used to construct two CNN models: (1) CNN_max consistes of 1 convolutional layer (32, 5x5 + 1(S)), 1 max-pooling layer(2x2 + 2), 1 fully-connected layer(100 neurons, ReLu) followed by dropout rate = 0.4, and 1 output layer (2 neurons corresponding to the 2 classes); (2) CNN_avg consists of 1 convolutional layer (32, 5x5 + 1(S)), 1 avg-pooling layer(2x2 + 2), 1 fully-connected layer(100 neurons, ReLu) with dropout rate = 0.4, and 1 output layer (2 neurons corresponding to the 2 classes). Each of the four (4) data sets was devided into train/development/test sets in 60/20/20 ratio. Each model was trained on the train set and validated on the development set before it's deployed to evaluate the test set.**
+
+The results from our eight (8) experiments show that**: 
+1. When larger images (128x128) are used for model training and development, the accuracy of the model is mostly higher than that when smaller images (64x64) are utilized.
+2. When images in color (channel=3) are used for model training and development, the model consistently outperforms that built with gray images (channel=1), no matter of the image size or the type of pooling-layer.
+3. Max_pooling method is recommended.
+    
+While it is evident that it takes much longer time to train and develop the CNN model if larger colorful image (128x128, channel=3) are used, the mangement's primary concern is achieving the highest possible accuracy in image classification. Therefore, it is recommended to utilize higher-resolution images (128x128) in RGB color (channel=3) for training and development of CNN model with max_pooling layer designed within , at the cost of runtime.**
